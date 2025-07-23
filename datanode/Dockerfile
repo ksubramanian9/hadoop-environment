@@ -2,6 +2,7 @@ FROM hadoop-base:3.3.6
 
 HEALTHCHECK CMD curl -f http://localhost:9864/ || exit 1
 
+ENV JAVA_HOME=/usr/local/openjdk-11
 ENV HDFS_CONF_dfs_datanode_data_dir=file:///hadoop/dfs/data
 RUN mkdir -p /hadoop/dfs/data
 VOLUME /hadoop/dfs/data

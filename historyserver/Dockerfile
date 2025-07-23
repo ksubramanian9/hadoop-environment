@@ -2,6 +2,8 @@ FROM hadoop-base:3.3.6
 
 HEALTHCHECK CMD curl -f http://localhost:8188/ || exit 1
 
+ENV JAVA_HOME=/usr/local/openjdk-11
+
 ENV YARN_CONF_yarn_timeline___service_leveldb___timeline___store_path=/hadoop/yarn/timeline
 RUN mkdir -p /hadoop/yarn/timeline
 VOLUME /hadoop/yarn/timeline

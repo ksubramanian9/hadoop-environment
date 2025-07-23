@@ -1,5 +1,3 @@
-version: "2.4"
-
 services:
   namenode:
     build: ./namenode
@@ -10,6 +8,7 @@ services:
       - ./map_reduce/:/hadoop-data/map_reduce
     environment:
       - CLUSTER_NAME=test
+      - JAVA_HOME=/usr/local/openjdk-11
     ports:
       - "9870:9870"
       - "8020:8020"
@@ -20,6 +19,9 @@ services:
     build: ./resourcemanager
     container_name: resourcemanager
     restart: on-failure
+    environment:
+      - CLUSTER_NAME=test
+      - JAVA_HOME=/usr/local/openjdk-11
     depends_on:
       - namenode
       - datanode1
@@ -33,6 +35,9 @@ services:
   historyserver:
     build: ./historyserver
     container_name: historyserver
+    environment:
+      - CLUSTER_NAME=test
+      - JAVA_HOME=/usr/local/openjdk-11
     depends_on:
       - namenode
       - datanode1
@@ -47,6 +52,9 @@ services:
   nodemanager1:
     build: ./nodemanager
     container_name: nodemanager1
+    environment:
+      - CLUSTER_NAME=test
+      - JAVA_HOME=/usr/local/openjdk-11
     depends_on:
       - namenode
       - datanode1
@@ -59,6 +67,9 @@ services:
   datanode1:
     build: ./datanode
     container_name: datanode1
+    environment:
+      - CLUSTER_NAME=test
+      - JAVA_HOME=/usr/local/openjdk-11
     depends_on:
       - namenode
     volumes:
@@ -69,6 +80,9 @@ services:
   datanode2:
     build: ./datanode
     container_name: datanode2
+    environment:
+      - CLUSTER_NAME=test
+      - JAVA_HOME=/usr/local/openjdk-11
     depends_on:
       - namenode
     volumes:
@@ -79,6 +93,9 @@ services:
   datanode3:
     build: ./datanode
     container_name: datanode3
+    environment:
+      - CLUSTER_NAME=test
+      - JAVA_HOME=/usr/local/openjdk-11
     depends_on:
       - namenode
     volumes:

@@ -25,13 +25,13 @@ COPY --from=jdk $JAVA_HOME $JAVA_HOME
 # --------------------------------------------------------
 ENV HADOOP_VERSION=3.3.6
 ENV HADOOP_URL=https://downloads.apache.org/hadoop/common/hadoop-$HADOOP_VERSION/hadoop-$HADOOP_VERSION.tar.gz
-ENV HADOOP_PREFIX=/opt/hadoop-$HADOOP_VERSION
+ENV HADOOP_HOME=/opt/hadoop-$HADOOP_VERSION
 ENV HADOOP_CONF_DIR=/etc/hadoop
 ENV MULTIHOMED_NETWORK=1
 ENV USER=root
-ENV HADOOP_HOME=/opt/hadoop-$HADOOP_VERSION
-ENV PATH $HADOOP_PREFIX/bin/:$PATH
-ENV PATH $HADOOP_HOME/bin/:$PATH
+# ENV HADOOP_HOME=/opt/hadoop-$HADOOP_VERSION
+ENV PATH=$HADOOP_HOME/bin/:$PATH
+ENV PATH=$HADOOP_HOME/bin/:$PATH
 
 RUN set -x \
     && curl -fSL "$HADOOP_URL" -o /tmp/hadoop.tar.gz \
