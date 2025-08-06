@@ -13,4 +13,4 @@ RUN chmod a+x /run.sh
 
 EXPOSE 8188
 
-CMD ["/run.sh"]
+CMD ["/bin/bash", "/run.sh"]

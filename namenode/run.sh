@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # Check if namenode dir exists
 namedir=`echo $HDFS_CONF_dfs_namenode_name_dir | perl -pe 's#file://##'`
 if [ ! -d $namedir ]; then
